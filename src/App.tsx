@@ -6,11 +6,10 @@ import { Genre } from "./hooks/useGenres";
 import { useState } from "react";
 
 function App() {
-  const [genreIdFilter, setGenreIdFilter] = useState(0);
+  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
 
   const handleSelectGenre = (genre: Genre) => {
-    console.log(genre);
-    setGenreIdFilter(genre.id);
+    setSelectedGenre(genre);
   };
   return (
     <Grid
@@ -32,7 +31,7 @@ function App() {
         </GridItem>
       </Show>
       <GridItem area="min">
-        <GameGrid genreIdFilter={genreIdFilter} />
+        <GameGrid selectedGenre={selectedGenre} />
       </GridItem>
     </Grid>
   );
