@@ -4,8 +4,12 @@ import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
 import GameCardContainer from "./GameCardContainer";
 
-const GameGrid = () => {
-  const { data: games, error, isLoading } = useGames();
+interface Props {
+  genreIdFilter: number;
+}
+
+const GameGrid = ({ genreIdFilter }: Props) => {
+  const { data: games, error, isLoading } = useGames(genreIdFilter);
 
   const skeletons = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
@@ -20,11 +24,12 @@ const GameGrid = () => {
         spacing={3}
         padding={3}
       >
-        {games.map((game) => (
-          <GameCardContainer key={game.id}>
-            <GameCard key={game.id} game={game} />
-          </GameCardContainer>
-        ))}
+        {!isLoading &&
+          games.map((game) => (
+            <GameCardContainer key={game.id}>
+              <GameCard game={game} />
+            </GameCardContainer>
+          ))}
         {isLoading &&
           skeletons.map((skeleton) => (
             <GameCardContainer key={"gk" + skeleton}>

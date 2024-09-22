@@ -14,6 +14,10 @@ export interface Game {
   metacritic:number;
 }
 
-const useGames = () => useData<Game>('/games');
+const useGames = (genreIdFilter:number) => {
+
+return useData<Game>('/games', {params: {genres: genreIdFilter === 0 ? null:genreIdFilter}}, [genreIdFilter]);
+
+}
 
 export default useGames;
