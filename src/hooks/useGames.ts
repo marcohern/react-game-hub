@@ -18,6 +18,7 @@ export interface SortOrder {
 export interface GameQuery {
   genre: Genre | null;
   platform: Platform | null;
+  title: string;
   sortOrder:SortOrder|null;
 }
 
@@ -27,7 +28,8 @@ return useData<Game>('/games', {
   params: {
     genres: gameQuery.genre?.id,
     platforms: gameQuery.platform?.id,
-    ordering: gameQuery.sortOrder?.slug
+    ordering: gameQuery.sortOrder?.slug,
+    search: gameQuery.title
   }
 }, [gameQuery]);
 
