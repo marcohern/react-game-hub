@@ -7,10 +7,7 @@ import PlatformSelector from "./components/PlatformSelector";
 import { GameQuery } from "./hooks/useGames";
 
 function App() {
-  const [gameQuery, setGameQuery] = useState<GameQuery>({
-    genre: null,
-    platform: null,
-  });
+  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
   return (
     <Grid
       templateAreas={{

@@ -16,9 +16,9 @@ export interface GameQuery {
   platform: Platform | null;
 }
 
-const useGames = ({genre, platform }: GameQuery) => {
+const useGames = (gameQuery: GameQuery) => {
 
-return useData<Game>('/games', {params: {genres: genre?.id, platforms: platform?.id }}, [genre, platform]);
+return useData<Game>('/games', {params: {genres: gameQuery.genre?.id, platforms: gameQuery.platform?.id }}, [gameQuery]);
 
 }
 
