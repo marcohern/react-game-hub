@@ -4,6 +4,7 @@ import { CACHE_KEY_GAMES } from "../constants";
 import GameQuery from "../queries/GameQuery";
 import Game from "../models/Game";
 import { Pager } from "../services/api-client";
+import ms from "ms";
 
 const useGames = (gameQuery: GameQuery) => {
   
@@ -20,7 +21,7 @@ const useGames = (gameQuery: GameQuery) => {
         }
       }),
     initialPageParam: 1,
-    staleTime: 24* 60 * 60 * 1000, //24h
+    staleTime: ms('24h'),
     //placeholderData: (prev) => prev,
     getNextPageParam: (lastPage, allPages) => {
       return lastPage.next ? allPages.length + 1 : undefined
