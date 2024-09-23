@@ -12,10 +12,10 @@ import SortOrder from "../queries/SortOrder";
 
 interface Props {
   onSelectSortOrder: (sortOrder: SortOrder) => void;
-  selectedSortOrder: SortOrder | null;
+  selectedSortOrderSlug: string | null;
 }
 
-const SortSelector = ({ onSelectSortOrder, selectedSortOrder }: Props) => {
+const SortSelector = ({ onSelectSortOrder, selectedSortOrderSlug }: Props) => {
   const sortOptions: SortOrder[] = [
     { slug: "", name: "Relevance" },
     { slug: "name", name: "Name" },
@@ -24,6 +24,10 @@ const SortSelector = ({ onSelectSortOrder, selectedSortOrder }: Props) => {
     { slug: "-rating", name: "Popularity" },
     { slug: "-metacritic", name: "Average rating" },
   ];
+
+  const selectedSortOrder = sortOptions.find(
+    (s) => s.slug === selectedSortOrderSlug
+  );
 
   return (
     <Menu>
