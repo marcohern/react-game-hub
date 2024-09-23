@@ -33,7 +33,6 @@ const SearchInput = ({ onSearchByTitle }: Props) => {
           <InputGroup width={100}>
             <Button type="submit" borderRadius={10}>
               <BsSearch />
-
               <Text paddingLeft={2}>Search</Text>
             </Button>
           </InputGroup>

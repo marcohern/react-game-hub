@@ -21,7 +21,7 @@ const useGames = (gameQuery: GameQuery) => {
       let config:AxiosRequestConfig = {
         params: {
           genres: gameQuery.genre?.id,
-          platforms: gameQuery.platform?.id,
+          parent_platforms: gameQuery.platform?.id,
           ordering: gameQuery.sortOrder?.slug,
           search: gameQuery.title,
           page_size: 4*3*2

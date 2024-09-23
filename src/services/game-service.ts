@@ -1,4 +1,4 @@
-import { Game } from "../hooks/useGames";
+import Game from "../models/Game";
 import ApiClient from "./api-client";
 
 export default new ApiClient<Game>('/games');
