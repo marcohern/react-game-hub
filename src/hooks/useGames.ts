@@ -24,26 +24,34 @@ export interface GameQuery {
   platform: Platform | null;
   title: string;
   sortOrder:SortOrder|null;
-  pageSize:number
+  pageSize:number;
 }
 
 const useGames = (gameQuery: GameQuery) => {
 
-  
+  const exportGameQueryKey = () => {
+    let key = 'gk';
+    key += '-' + ((gameQuery.genre) ? gameQuery.genre.id : '__allGenres');
+    key += '-' + ((gameQuery.platform) ? gameQuery.platform.id : '__allPlatforms');
+    key += '-' + ((gameQuery.sortOrder) ? gameQuery.sortOrder.slug : '__defaultSort');
+    key += '-' + ((gameQuery.title) ? gameQuery.title : '__anyTitle');
+    return key;
+  };
 
   return useInfiniteQuery<Game[], Error>({
-    queryKey: [CACHE_KEY_GAMES, gameQuery],
+    queryKey: [CACHE_KEY_GAMES, exportGameQueryKey()],
     queryFn: ({pageParam}) => {
       let config:AxiosRequestConfig = {
         params: {
           genres: gameQuery.genre?.id,
           platforms: gameQuery.platform?.id,
           ordering: gameQuery.sortOrder?.slug,
-          search: gameQuery.title
+          search: gameQuery.title,
+          page_size: 4*3*2
         }
       };
       
-      //if (pageParam) config.params.page = (pageParam as number - 1)*gameQuery.pageSize;
+      if (pageParam) config.params.page = pageParam;
       
       return gameService.get(config);
     },
