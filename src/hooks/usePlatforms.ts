@@ -1,12 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { CACHE_KEY_PLATFORM } from "../constants";
+import Platform from "../models/Platform";
 import platformsService from "../services/platforms-service";
-
-export interface Platform {
-  id: number;
-  name:string;
-  slug:string;
-}
 
 //const usePlatforms = () => useData<Platform>('/platforms/lists/parents');
 const usePlatforms = () => 

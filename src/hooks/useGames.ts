@@ -1,34 +1,11 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { Genre } from "./useGenres";
-import { Platform } from "./usePlatforms";
 import gameService from "../services/game-service";
 import { CACHE_KEY_GAMES } from "../constants";
 import { AxiosRequestConfig } from "axios";
-
-export interface Game {
-  id: number;
-  slug: string;
-  name: string;
-  background_image:string;
-  parent_platforms: { platform: Platform }[];
-  metacritic:number;
-  rating_top:number;
-}
-
-export interface SortOrder {
-  slug: string;
-  name: string;
-}
-export interface GameQuery {
-  genre: Genre | null;
-  platform: Platform | null;
-  title: string;
-  sortOrder:SortOrder|null;
-  pageSize:number;
-}
+import GameQuery from "../queries/GameQuery";
+import Game from "../models/Game";
 
 const useGames = (gameQuery: GameQuery) => {
-
   const exportGameQueryKey = () => {
     let key = 'gk';
     key += '-' + ((gameQuery.genre) ? gameQuery.genre.id : '__allGenres');
