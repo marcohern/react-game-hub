@@ -23,9 +23,13 @@ class ApiClient<T> {
     return axiosInstance.get<Pager<T>>(this.endpoint).then((res) => res.data.results)
   };
   
-  get = (config?:AxiosRequestConfig) => axiosInstance
-    .get<T[]>(this.endpoint, config)
-    .then((res) => res.data);
+  get = (config?:AxiosRequestConfig) => { 
+    return axiosInstance
+      .get<Pager<T>>(this.endpoint, config)
+      .then((res) => {
+        return res.data.results;
+      });
+  }
 }
 
 export default ApiClient;
