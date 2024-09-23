@@ -56,7 +56,7 @@ const useGames = (gameQuery: GameQuery) => {
       return gameService.get(config);
     },
     initialPageParam: 1,
-    staleTime: 24*60*60*1000,
+    staleTime: 1*60*1000,
     placeholderData: (prev) => prev,
     getNextPageParam: (lastPage, allPages) =>
       (lastPage.length > 0) ? allPages.length + 1 : undefined
