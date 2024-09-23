@@ -9,7 +9,9 @@ import GameHeading from "./components/GameHeading";
 import GameQuery from "./queries/GameQuery";
 
 function App() {
-  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
+  const [gameQuery, setGameQuery] = useState<GameQuery>({
+    page: 1,
+  } as GameQuery);
 
   return (
     <Grid

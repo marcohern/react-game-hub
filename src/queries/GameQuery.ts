@@ -8,6 +8,7 @@ interface GameQuery {
   title: string;
   sortOrder:SortOrder|null;
   pageSize:number;
+  page:number;
 }
 
 export default GameQuery;

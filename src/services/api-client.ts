@@ -7,8 +7,9 @@ export const axiosInstance = axios.create({
   }
 });
 
-interface Pager<T> {
+export interface Pager<T> {
   count:number;
+  next: string|null;
   results: T[];
 }
 
@@ -20,14 +21,14 @@ class ApiClient<T> {
   }
 
   getAll = () => {
-    return axiosInstance.get<Pager<T>>(this.endpoint).then((res) => res.data.results)
+    return axiosInstance.get<Pager<T>>(this.endpoint).then((res) => res.data)
   };
   
   get = (config?:AxiosRequestConfig) => { 
     return axiosInstance
       .get<Pager<T>>(this.endpoint, config)
       .then((res) => {
-        return res.data.results;
+        return res.data;
       });
   }
 }
