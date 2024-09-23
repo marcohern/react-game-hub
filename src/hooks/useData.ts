@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import apiClient from "../services/api-client";
+import { axiosInstance } from "../services/api-client";
 import { AxiosRequestConfig, CanceledError } from "axios";
 
 interface FetchResponse<T> {
@@ -15,7 +15,7 @@ const useData = <T>(endpoint:string, requestConfig?:AxiosRequestConfig, deps?:an
   useEffect(() => {
     const controller = new AbortController();
     setLoading(true);
-    apiClient
+    axiosInstance
       .get<FetchResponse<T>>(endpoint, {...requestConfig, signal:controller.signal})
       .then((response) => {
         setData(response.data.results);
