@@ -8,7 +8,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
-import { SortOrder } from "../hooks/useGames";
+import SortOrder from "../queries/SortOrder";
 
 interface Props {
   onSelectSortOrder: (sortOrder: SortOrder) => void;
