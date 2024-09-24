@@ -1,13 +1,15 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import gameService from "../services/game-service";
 import { CACHE_KEY_GAMES } from "../constants";
-import GameQuery from "../queries/GameQuery";
 import Game from "../models/Game";
 import { Pager } from "../services/api-client";
 import ms from "ms";
+import useGameQueryStore from "../stores/useGameQueryStore";
 
-const useGames = (gameQuery: GameQuery) => {
+const useGames = () => {
   
+  const gameQuery = useGameQueryStore(s => s.gameQuery);
+
   return useInfiniteQuery<Pager<Game>, Error>({
     queryKey: [CACHE_KEY_GAMES, gameQuery],
     queryFn: ({pageParam}) =>  gameService.get({

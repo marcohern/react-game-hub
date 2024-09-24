@@ -12,7 +12,8 @@ import SortOrder from "../queries/SortOrder";
 import useGameQueryStore from "../stores/useGameQueryStore";
 
 const SortSelector = () => {
-  const { gameQuery, setSortOrder } = useGameQueryStore();
+  const sortOrderSlug = useGameQueryStore((s) => s.gameQuery.sortOrderSlug);
+  const setSortOrder = useGameQueryStore((s) => s.setSortOrder);
 
   const sortOptions: SortOrder[] = [
     { slug: "", name: "Relevance" },
@@ -23,9 +24,7 @@ const SortSelector = () => {
     { slug: "-metacritic", name: "Average rating" },
   ];
 
-  const selectedSortOrder = sortOptions.find(
-    (s) => s.slug === gameQuery.sortOrderSlug
-  );
+  const selectedSortOrder = sortOptions.find((s) => s.slug === sortOrderSlug);
 
   return (
     <Menu>

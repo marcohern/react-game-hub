@@ -5,14 +5,9 @@ import useGames from "../hooks/useGames";
 import GameCard from "./GameCard";
 import GameCardContainer from "./GameCardContainer";
 import GameCardSkeleton from "./GameCardSkeleton";
-import useGameQueryStore from "../stores/useGameQueryStore";
 
 const GameGrid = () => {
-  const { gameQuery } = useGameQueryStore();
-
-  const { data, error, isLoading, fetchNextPage, hasNextPage } =
-    useGames(gameQuery);
-
+  const { data, error, isLoading, fetchNextPage, hasNextPage } = useGames();
   const skeletons = [...Array(24).keys()];
 
   console.log("games", data);
