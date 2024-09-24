@@ -9,19 +9,17 @@ import {
 } from "@chakra-ui/react";
 import { useRef } from "react";
 import { BsSearch } from "react-icons/bs";
+import useGameQueryStore from "../stores/useGameQueryStore";
 
-interface Props {
-  onSearchByTitle: (title: string) => void;
-}
-
-const SearchInput = ({ onSearchByTitle }: Props) => {
+const SearchInput = () => {
+  const { setSearchText } = useGameQueryStore();
   const ref = useRef<HTMLInputElement>(null);
 
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        if (ref.current) onSearchByTitle(ref.current.value);
+        if (ref.current) setSearchText(ref.current.value);
       }}
     >
       <HStack>
