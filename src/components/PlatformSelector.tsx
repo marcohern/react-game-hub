@@ -5,7 +5,7 @@ import usePlatform from "../hooks/usePlatform";
 import useGameQueryStore from "../stores/useGameQueryStore";
 
 const PlatformSelector = () => {
-  const { gameQuery, setPlatformId } = useGameQueryStore();
+  const { gameQuery, setPlatformId, clearPlatformId } = useGameQueryStore();
 
   const { data: platforms, error } = usePlatforms();
   const selectedPlatform = usePlatform(gameQuery.platformId);
@@ -17,7 +17,7 @@ const PlatformSelector = () => {
         {selectedPlatform?.name ?? "Platform"}
       </MenuButton>
       <MenuList>
-        <MenuItem onClick={() => setPlatformId()}>*All Platforms</MenuItem>
+        <MenuItem onClick={() => clearPlatformId()}>*All Platforms</MenuItem>
         {platforms?.results.map((platform) => (
           <MenuItem
             key={platform.id}
