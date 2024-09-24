@@ -4,11 +4,8 @@ import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
 import PlatformSelector from "./components/PlatformSelector";
 import GameHeading from "./components/GameHeading";
-import useGameQueryStore from "./stores/useGameQueryStore";
 
 function App() {
-  const { gameQuery } = useGameQueryStore();
-
   return (
     <Grid
       templateAreas={{
@@ -30,7 +27,7 @@ function App() {
       </Show>
       <GridItem area="main">
         <Box paddingLeft={3}>
-          <GameHeading gameQuery={gameQuery} />
+          <GameHeading />
           <HStack>
             <HStack>
               <PlatformSelector />
