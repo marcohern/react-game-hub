@@ -50,7 +50,7 @@ function App() {
                 onSelectPlatform={(platform) =>
                   setGameQuery({
                     ...gameQuery,
-                    platformId: platform?.id ?? null,
+                    platformId: platform?.id,
                   })
                 }
                 selectedPlatformId={gameQuery.platformId}
@@ -59,7 +59,7 @@ function App() {
                 onSelectSortOrder={(sortOrder) =>
                   setGameQuery({ ...gameQuery, sortOrderSlug: sortOrder.slug })
                 }
-                selectedSortOrderSlug={gameQuery.sortOrderSlug}
+                selectedSortOrderSlug={gameQuery.sortOrderSlug ?? ""}
               ></SortSelector>
             </HStack>
           </HStack>
