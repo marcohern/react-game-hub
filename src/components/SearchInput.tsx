@@ -12,7 +12,7 @@ import { BsSearch } from "react-icons/bs";
 import useGameQueryStore from "../stores/useGameQueryStore";
 
 const SearchInput = () => {
-  const { setSearchText } = useGameQueryStore();
+  const setSearchText = useGameQueryStore((s) => s.setSearchText);
   const ref = useRef<HTMLInputElement>(null);
 
   return (
