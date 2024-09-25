@@ -21,9 +21,7 @@ const GameDetailsPage = () => {
       <SimpleGrid as="dl" columns={2} spacing={2}>
         <Attribute title="Platforms">
           {game.parent_platforms.map((p) => (
-            <Text as="dd" key={p.platform.id}>
-              {p.platform.name}
-            </Text>
+            <Text key={p.platform.id}>{p.platform.name}</Text>
           ))}
         </Attribute>
         <Attribute title="Metascore">
@@ -31,16 +29,12 @@ const GameDetailsPage = () => {
         </Attribute>
         <Attribute title="Genres">
           {game.genres.map((g) => (
-            <Text as="dd" key={g.id}>
-              {g.name}
-            </Text>
+            <Text key={g.id}>{g.name}</Text>
           ))}
         </Attribute>
         <Attribute title="Publishers">
           {game.publishers.map((p) => (
-            <Text as="dd" key={p.id}>
-              {p.name}
-            </Text>
+            <Text key={p.id}>{p.name}</Text>
           ))}
         </Attribute>
       </SimpleGrid>
