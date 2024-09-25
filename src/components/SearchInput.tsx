@@ -9,10 +9,10 @@ import {
 } from "@chakra-ui/react";
 import { useRef } from "react";
 import { BsSearch } from "react-icons/bs";
-import useGameQueryStore from "../stores/useGameQueryStore";
+import useGamesQueryStore from "../stores/useGamesQueryStore";
 
 const SearchInput = () => {
-  const setSearchText = useGameQueryStore((s) => s.setSearchText);
+  const setSearchText = useGamesQueryStore((s) => s.setSearchText);
   const ref = useRef<HTMLInputElement>(null);
 
   return (

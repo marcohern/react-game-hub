@@ -10,7 +10,7 @@ interface GameQueryStore {
   setSortOrder: (sortOrder: string) => void;
 }
 
-const useGameQueryStore = create<GameQueryStore>(set => ({
+const useGamesQueryStore = create<GameQueryStore>(set => ({
   gameQuery: {} as GameQuery,
   setSearchText: (searchText: string) => set(() => ({gameQuery: { title: searchText }})),
   setGenreId: (genreId: number) => set(store => ({gameQuery: {...store.gameQuery, genreId: genreId }})),
@@ -19,4 +19,4 @@ const useGameQueryStore = create<GameQueryStore>(set => ({
   setSortOrder: (sortOrder: string) => set(store => ({gameQuery: {...store.gameQuery, sortOrderSlug: sortOrder }})),
 }));
 
-export default useGameQueryStore;
+export default useGamesQueryStore;

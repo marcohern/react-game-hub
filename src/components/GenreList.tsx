@@ -9,11 +9,11 @@ import {
 } from "@chakra-ui/react";
 import getCroppedImageUrl from "../services/image-url";
 import useGenres from "../hooks/useGenres";
-import useGameQueryStore from "../stores/useGameQueryStore";
+import useGamesQueryStore from "../stores/useGamesQueryStore";
 
 const GenreList = () => {
-  const selectedGenreId = useGameQueryStore((s) => s.gameQuery.genreId);
-  const setGenreId = useGameQueryStore((s) => s.setGenreId);
+  const selectedGenreId = useGamesQueryStore((s) => s.gameQuery.genreId);
+  const setGenreId = useGamesQueryStore((s) => s.setGenreId);
 
   const { data: genres, isLoading } = useGenres();
 

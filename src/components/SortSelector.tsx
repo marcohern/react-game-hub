@@ -9,11 +9,11 @@ import {
 } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
 import SortOrder from "../queries/SortOrder";
-import useGameQueryStore from "../stores/useGameQueryStore";
+import useGamesQueryStore from "../stores/useGamesQueryStore";
 
 const SortSelector = () => {
-  const sortOrderSlug = useGameQueryStore((s) => s.gameQuery.sortOrderSlug);
-  const setSortOrder = useGameQueryStore((s) => s.setSortOrder);
+  const sortOrderSlug = useGamesQueryStore((s) => s.gameQuery.sortOrderSlug);
+  const setSortOrder = useGamesQueryStore((s) => s.setSortOrder);
 
   const sortOptions: SortOrder[] = [
     { slug: "", name: "Relevance" },

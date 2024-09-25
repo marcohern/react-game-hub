@@ -4,11 +4,11 @@ import { CACHE_KEY_GAMES } from "../constants";
 import Game from "../models/Game";
 import { Pager } from "../services/api-client";
 import ms from "ms";
-import useGameQueryStore from "../stores/useGameQueryStore";
+import useGamesQueryStore from "../stores/useGamesQueryStore";
 
 const useGames = () => {
   
-  const gameQuery = useGameQueryStore(s => s.gameQuery);
+  const gameQuery = useGamesQueryStore(s => s.gameQuery);
 
   return useInfiniteQuery<Pager<Game>, Error>({
     queryKey: [CACHE_KEY_GAMES, gameQuery],
