@@ -9,6 +9,9 @@ interface Game {
   parent_platforms: { platform: Platform }[];
   metacritic:number;
   rating_top:number;
+  platforms:{platform: Platform }[];
+  publishers:{id: number, name:string }[];
+  genres:{id: number, name:string }[];
 }
 
 export default Game;
