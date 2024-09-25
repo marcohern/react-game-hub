@@ -35,6 +35,7 @@ class ApiClient<T> {
   fetch = (slug:string) => axiosInstance
     .get<T>(`${this.endpoint}/${slug}`).then(res => res.data);
   
+  fetchSub = <U>(posfix:string, id:number) => axiosInstance.get<Pager<U>>(`${this.endpoint}/${id}/${posfix}`).then(res => res.data)
 }
 
 export default ApiClient;
