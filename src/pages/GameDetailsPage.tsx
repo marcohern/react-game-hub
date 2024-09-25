@@ -1,4 +1,4 @@
-import { Heading, SimpleGrid, Spinner, Text } from "@chakra-ui/react";
+import { Box, Heading, SimpleGrid, Spinner, Text } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
 import useGame from "../hooks/useGame";
 import ExpandableText from "../components/ExpandableText";
@@ -20,28 +20,32 @@ const GameDetailsPage = () => {
     <>
       <Heading>{game.name}</Heading>
       <ExpandableText>{game.description_raw}</ExpandableText>
-      <SimpleGrid as="dl" columns={2} spacing={2}>
-        <Attribute title="Platforms">
-          {game.parent_platforms.map((p) => (
-            <Text key={p.platform.id}>{p.platform.name}</Text>
-          ))}
-        </Attribute>
-        <Attribute title="Metascore">
-          <CriticScore score={game.metacritic} />
-        </Attribute>
-        <Attribute title="Genres">
-          {game.genres.map((g) => (
-            <Text key={g.id}>{g.name}</Text>
-          ))}
-        </Attribute>
-        <Attribute title="Publishers">
-          {game.publishers.map((p) => (
-            <Text key={p.id}>{p.name}</Text>
-          ))}
-        </Attribute>
+      <SimpleGrid columns={{ base: 1, md: 2 }}>
+        <SimpleGrid as="dl" columns={2} spacing={2}>
+          <Attribute title="Platforms">
+            {game.parent_platforms.map((p) => (
+              <Text key={p.platform.id}>{p.platform.name}</Text>
+            ))}
+          </Attribute>
+          <Attribute title="Metascore">
+            <CriticScore score={game.metacritic} />
+          </Attribute>
+          <Attribute title="Genres">
+            {game.genres.map((g) => (
+              <Text key={g.id}>{g.name}</Text>
+            ))}
+          </Attribute>
+          <Attribute title="Publishers">
+            {game.publishers.map((p) => (
+              <Text key={p.id}>{p.name}</Text>
+            ))}
+          </Attribute>
+        </SimpleGrid>
+        <Box>
+          <GameTrailer id={game.id} />
+          <GameScreenshots id={game.id} />
+        </Box>
       </SimpleGrid>
-      <GameTrailer id={game.id} />
-      <GameScreenshots id={game.id} />
     </>
   );
 };
