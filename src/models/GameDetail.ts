@@ -4,6 +4,7 @@ interface GameDetail {
   name: string;
   name_original: string;
   description: string;
+  description_raw: string;
   metacritic: number;
   tba: boolean;
   rating: number;

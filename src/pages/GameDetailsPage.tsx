@@ -10,10 +10,11 @@ const GameDetailsPage = () => {
   const { data: game, isLoading } = useGame(params.slug);
 
   if (isLoading) return <Heading>Loading...</Heading>;
+
   return (
     <>
       <Heading>{game?.name}</Heading>
-      <div dangerouslySetInnerHTML={{ __html: game?.description || "" }} />
+      <Text>{game?.description_raw}</Text>
     </>
   );
 };
