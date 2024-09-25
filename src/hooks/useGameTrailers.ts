@@ -9,7 +9,7 @@ const useGameTrailers = (id:number) => {
 
   return useQuery<Pager<Trailer>, Error>({
     queryKey: [CACHE_KEY_GAME_TRAILERS, id],
-    queryFn: trailerSevice.getAll
+    queryFn: () => trailerSevice.getAll()
   });
 }
 

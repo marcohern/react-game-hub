@@ -5,6 +5,7 @@ import ExpandableText from "../components/ExpandableText";
 import Attribute from "../components/Attribute";
 import CriticScore from "../components/CriticScore";
 import GameTrailer from "../components/GameTrailer";
+import GameScreenshots from "../components/GameScreenshots";
 
 const GameDetailsPage = () => {
   const { slug } = useParams();
@@ -40,6 +41,7 @@ const GameDetailsPage = () => {
         </Attribute>
       </SimpleGrid>
       <GameTrailer id={game.id} />
+      <GameScreenshots id={game.id} />
     </>
   );
 };
