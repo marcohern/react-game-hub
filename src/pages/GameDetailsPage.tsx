@@ -18,29 +18,31 @@ const GameDetailsPage = () => {
 
   return (
     <>
-      <Heading>{game.name}</Heading>
-      <ExpandableText>{game.description_raw}</ExpandableText>
-      <SimpleGrid columns={{ base: 1, md: 2 }}>
-        <SimpleGrid as="dl" columns={2} spacing={2}>
-          <Attribute title="Platforms">
-            {game.parent_platforms.map((p) => (
-              <Text key={p.platform.id}>{p.platform.name}</Text>
-            ))}
-          </Attribute>
-          <Attribute title="Metascore">
-            <CriticScore score={game.metacritic} />
-          </Attribute>
-          <Attribute title="Genres">
-            {game.genres.map((g) => (
-              <Text key={g.id}>{g.name}</Text>
-            ))}
-          </Attribute>
-          <Attribute title="Publishers">
-            {game.publishers.map((p) => (
-              <Text key={p.id}>{p.name}</Text>
-            ))}
-          </Attribute>
-        </SimpleGrid>
+      <SimpleGrid columns={{ base: 1, md: 2 }} marginY={3}>
+        <Box>
+          <Heading>{game.name}</Heading>
+          <ExpandableText>{game.description_raw}</ExpandableText>
+          <SimpleGrid as="dl" columns={2} spacing={2}>
+            <Attribute title="Platforms">
+              {game.parent_platforms.map((p) => (
+                <Text key={p.platform.id}>{p.platform.name}</Text>
+              ))}
+            </Attribute>
+            <Attribute title="Metascore">
+              <CriticScore score={game.metacritic} />
+            </Attribute>
+            <Attribute title="Genres">
+              {game.genres.map((g) => (
+                <Text key={g.id}>{g.name}</Text>
+              ))}
+            </Attribute>
+            <Attribute title="Publishers">
+              {game.publishers.map((p) => (
+                <Text key={p.id}>{p.name}</Text>
+              ))}
+            </Attribute>
+          </SimpleGrid>
+        </Box>
         <Box>
           <GameTrailer id={game.id} />
           <GameScreenshots id={game.id} />
