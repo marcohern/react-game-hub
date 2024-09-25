@@ -3,11 +3,11 @@ import { useParams } from "react-router-dom";
 import useGame from "../hooks/useGame";
 
 const GameDetailsPage = () => {
-  const params = useParams();
+  const { slug } = useParams();
 
-  if (!params.slug) throw new Error("Game not found");
+  if (!slug) throw new Error("Game not found");
 
-  const { data: game, isLoading } = useGame(params.slug);
+  const { data: game, isLoading } = useGame(slug);
 
   if (isLoading) return <Heading>Loading...</Heading>;
 

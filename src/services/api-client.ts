@@ -1,5 +1,4 @@
 import axios, { AxiosRequestConfig } from "axios";
-import GameDetail from "../models/GameDetail";
 
 export const axiosInstance = axios.create({
   baseURL: 'https://api.rawg.io/api',
@@ -33,9 +32,9 @@ class ApiClient<T> {
       });
   }
 
-  fetch = (slug:string) => {
-    return axiosInstance.get<GameDetail>(`${this.endpoint}/${slug}`).then(res => res.data);
-  }
+  fetch = (slug:string) => axiosInstance
+    .get<T>(`${this.endpoint}/${slug}`).then(res => res.data);
+  
 }
 
 export default ApiClient;

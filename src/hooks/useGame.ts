@@ -1,14 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
-import ms from "ms";
 import { CACHE_KEY_GAME } from "../constants";
-import GameDetail from "../models/GameDetail";
 import gameService from "../services/game-service";
+import Game from "../models/Game";
 
 const useGame = (slug:string) => {
-  return useQuery<GameDetail, Error>({
+  return useQuery<Game, Error>({
     queryKey: [CACHE_KEY_GAME, slug],
-    queryFn: () =>  gameService.fetch(slug),
-    staleTime: ms('24h')
+    queryFn: () =>  gameService.fetch(slug)
   });
 }
 
