@@ -11,7 +11,7 @@ const GameCardContainer = ({ children }: Props) => {
       as={motion.div}
       borderRadius={10}
       overflow="hidden"
-      whileHover={{ scale: 1.05 }}
+      whileHover={{ scale: 1.04 }}
     >
       {children}
     </Box>
